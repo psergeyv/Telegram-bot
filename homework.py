@@ -34,8 +34,8 @@ def get_homework_statuses(current_timestamp):
 
 
 def send_message(message):
-    proxy = telegram.utils.request.Request(proxy_url='socks5://66.42.224.229:41679')
-    bot = telegram.Bot(token=TELEGRAM_TOKEN,request=proxy)
+    #proxy = telegram.utils.request.Request(proxy_url='socks5://66.42.224.229:41679')
+    bot = telegram.Bot(token=TELEGRAM_TOKEN)
     return bot.send_message(chat_id=CHAT_ID, text=message)    
 
 
@@ -48,7 +48,7 @@ def main():
             if new_homework.get('homeworks'):
                 send_message(parse_homework_status(new_homework.get('homeworks')[0]))
             current_timestamp = new_homework.get('current_date')  # обновить timestamp
-            time.sleep(1200)  # опрашивать раз в пять минут
+            time.sleep(1200)  # опрашивать раз в 20 минут
 
         except Exception as e:
             print(f'Бот упал с ошибкой: {e}')
