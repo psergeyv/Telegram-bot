@@ -1,7 +1,4 @@
-import os
-import requests
-import telegram
-import time
+import os, requests, telegram, time
 from dotenv import load_dotenv
 
 load_dotenv()
